@@ -64,12 +64,7 @@ class SubregAPI
         );
         $response = $client->__call("Login", $params);
 
-        if ($response["status"] != "ok")
-        {
-            return ["status" => "err", "return" => $response];
-        }
-
-        return $response["data"]["ssid"];
+        return $response;
     }
 
     /**
@@ -82,21 +77,16 @@ class SubregAPI
         $client = $this->client();
         $token = $this->login($client);
 
-        if (isset($token["status"]) == "err")
+        if ($token["status"] != "ok")
         {
-            return $token["return"];
+            return $token;
         }
 
-        $data_send["data"] = array_merge(["ssid" => $token], $data);
+        $data_send["data"] = array_merge(["ssid" => $token["data"]["ssid"]], $data);
 
         $response = $client->__call($method, $data_send);
 
-        if ($response["status"] != "ok")
-        {
-            return $response;
-        }
-
-        return $response["data"];
+        return $response;
     }
 }
 
