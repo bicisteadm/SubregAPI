@@ -1,0 +1,22 @@
+{
+  "name": "bicisteadm/subregapi",
+  "description": "API class for subreg.cz",
+  "minimum-stability": "stable",
+  "license": "Apache-2.0",
+  "type": "package",
+  "authors": [
+    {
+      "name": "Adam Bičiště",
+      "email": "adam@freshost.cz"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "ext-soap": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "bicisteadm\\SubregAPI\\": "src/"
+    }
+  }
+}
